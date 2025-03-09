@@ -1,0 +1,128 @@
+Visão Geral do KOT – Keep On Track (Atualizado)
+KOT – Keep On Track é uma plataforma SaaS completa para creators, influenciadores e YouTubers que desejam tratar suas atividades online como um negócio profissional. O sistema integra o controle financeiro, o monitoramento de métricas dos canais e uma área interativa de planejamento e organização (o Kot Hub), permitindo que os usuários gerenciem suas finanças, acompanhem o desempenho digital e planejem estratégias de forma intuitiva e visual.
+
+Funcionalidades Principais e Futuras
+1. Dashboard
+Objetivo:
+Apresentar uma visão geral de todas as informações essenciais, com dados financeiros e métricas dos canais.
+Elementos:
+Cards de Resumo Financeiro: Total de receitas, total de despesas e saldo (receitas – despesas).
+Cards de Métricas de Canais: Dados das plataformas (ex.: YouTube: último vídeo, views diárias, views do mês, inscritos, etc.).
+Gráfico de Evolução: Visualização da evolução do saldo ou de outra métrica relevante.
+Atalhos Rápidos: Botões para acessar áreas como Gestão Financeira, Gestão de Mídias e Kot Hub.
+2. Gestão Financeira
+Objetivo:
+Permitir o registro, visualização e análise detalhada de todas as transações financeiras do creator.
+Elementos:
+Formulário para registro de transações (despesas e receitas) com campos para tipo, valor, data, descrição e categoria.
+Integração com um sistema de categorias (em português) que permite criar, editar e excluir categorias personalizadas.
+Visualização em tabela e fluxo de caixa com somatórias (exibindo despesas em vermelho e receitas em verde).
+Gráficos detalhados (pizza e linhas/barra) para análise de dados e exportação de informações (CSV/PDF).
+3. Gestão de Mídias (Métricas de Canais)
+Objetivo:
+Consolidar e exibir dados de desempenho dos canais (YouTube, Instagram, TikTok).
+Elementos:
+Cadastro de canais (permitindo até 2 canais gratuitos, com opção de upgrade).
+Para YouTube: dados obtidos via YouTube Data API v3 (último vídeo, views diárias, views mensais, inscritos, etc.).
+Para Instagram e TikTok: dados inicialmente simulados, com possibilidade de integração futura.
+Exibição de informações em cartões, gráficos de crescimento e ranking de postagens.
+4. Configurações / Perfil Integrado
+Objetivo:
+Centralizar as configurações do sistema e as informações do perfil do usuário.
+Elementos:
+Perfil do usuário: Exibição e edição de dados (nome, foto, email, cidade, telefone).
+Menu dropdown na Navbar com opções: Editar Perfil, Configurações Gerais, Ajuda/FAQ e Sair.
+Configurações Gerais: Opções para notificações por email, idioma e moeda; gerenciamento de integrações com APIs (YouTube, Instagram, TikTok).
+5. Login e Registro
+Objetivo:
+Permitir o acesso seguro e simples ao sistema.
+Elementos:
+Página de Login: Campos para email e senha; redireciona automaticamente para o Dashboard após o login.
+Página de Registro: Campos para criar uma conta (nome, email, senha).
+6. Kot Hub (Área Creators – Assistente Virtual)
+Objetivo:
+Fornecer uma área interativa onde o creator possa organizar suas tarefas, planejar ações e receber sugestões inteligentes do Assistente Virtual Kot.
+Elementos:
+Quadro de Tarefas:
+Estrutura estilo Trello, com colunas "A Fazer", "Em Progresso" e "Concluído".
+Cartões de tarefa que incluem título, descrição, data de vencimento e rótulos (ex.: Marketing, Parcerias).
+Assistente Virtual Kot:
+Um campo de prompt onde o creator pode digitar comandos em linguagem natural (por exemplo: “Kot, comprei uma camisa na Renner por R$49,90 ontem, adicione essa despesa.”).
+O assistente processa a mensagem e extrai os dados relevantes (valor, data, categoria, forma de pagamento), fazendo perguntas adicionais se necessário, e adiciona a tarefa ou o registro automaticamente no sistema.
+O assistente também pode receber arquivos (ex.: extratos bancários) e extrair informações para atualizar a Gestão Financeira.
+Interface:
+O Kot Hub aparece como um widget fixo ou popup na lateral de todas as páginas, permitindo acesso rápido sem interromper o fluxo do usuário.
+Feedback Visual:
+Sugestões são exibidas com botões para serem adicionadas diretamente ao quadro de tarefas.
+Aspectos de Design e Tecnologia
+Design Visual
+Paleta de Cores:
+Fundo: Branco
+Texto: Preto e cinza escuro
+Botões e Destaques: Tons de azul (ex.: #007bff) para ações, vermelho para despesas, verde para receitas.
+Fontes:
+Utilizar fontes modernas como Roboto, Open Sans ou Lato.
+Layout:
+Uso de espaços generosos, margens e padding para uma aparência limpa e organizada.
+Layout responsivo, adaptando-se a dispositivos móveis, tablets e desktops.
+Tecnologias e Ferramentas
+Frontend:
+React para a interface, com React Router para navegação.
+Biblioteca de Componentes: Pode usar Material UI ou Tailwind CSS para componentes visuais modernos e responsivos.
+Gráficos: Chart.js ou Recharts para visualizações interativas.
+Integração de API: axios para chamadas à API do backend e APIs externas (YouTube, etc.).
+Upload de Arquivos: Biblioteca como react-dropzone para permitir envio de extratos bancários.
+Backend:
+Node.js com Express para a API.
+PostgreSQL para armazenamento de dados.
+JWT para autenticação.
+API de Integração com YouTube: YouTube Data API v3 para obter métricas reais.
+API do OpenAI (para Assistente Virtual Kot): Usar a OpenAI API para processar comandos em linguagem natural.
+Agendador de Tarefas: node-cron para executar jobs periódicos (ex.: atualização de métricas).
+Fluxo de Uso do Sistema
+Acesso e Autenticação:
+
+O usuário chega na Landing Page, onde é apresentado o conceito do KOT e as opções para Login e Registro.
+Após o login, o usuário é redirecionado para o Dashboard e o sistema exibe seu nome na Navbar, junto com um menu dropdown para acessar as Configurações/Perfil.
+Dashboard:
+
+Exibe um resumo visual dos dados financeiros e das métricas dos canais, com gráficos interativos e atalhos para áreas detalhadas.
+Gestão Financeira:
+
+O usuário pode adicionar, editar e excluir registros financeiros.
+Os dados são exibidos em uma tabela e em gráficos, com filtros por data, tipo e categoria.
+As somatórias e o fluxo de caixa são calculados automaticamente, permitindo análises rápidas.
+Gestão de Mídias (Métricas de Canais):
+
+O usuário cadastra seus canais (inserindo o link completo, que é processado para extrair o ID) e visualiza métricas reais (para YouTube, via API) ou simuladas (para outras plataformas).
+O sistema exibe os dados em cartões com miniaturas, gráficos de crescimento e rankings de desempenho.
+Configurações / Perfil:
+
+O usuário pode editar seus dados pessoais e configurar preferências (notificações, idioma, moeda).
+As integrações com as APIs são gerenciadas nessa área, permitindo reconectar ou atualizar tokens conforme necessário.
+Kot Hub (Área Assistente Virtual):
+
+O creator acessa o Kot Hub (um widget fixo na lateral) para gerenciar suas tarefas e demandas.
+Ele pode digitar comandos em linguagem natural para adicionar registros financeiros ou tarefas, e o assistente interage perguntando detalhes adicionais (ex.: forma de pagamento).
+O Kot Hub também permite o upload de arquivos (como extratos bancários), que serão processados para extrair dados e atualizar a Gestão Financeira automaticamente.
+O assistente pode sugerir ideias de ações e campanhas com base nos dados e no histórico do usuário.
+Recursos Futuros
+Integração Avançada com APIs:
+Ampliar a integração com a YouTube Analytics API, além de melhorar a integração com Instagram e TikTok.
+Relatórios e Análises Avançadas:
+Permitir geração de relatórios customizados (em PDF e CSV) com base em filtros e períodos escolhidos.
+Notificações Proativas:
+Implementar um sistema de alertas que notifique o usuário sobre variações significativas (ex.: aumento inesperado de despesas, queda de inscritos).
+Integração com Ferramentas Externas:
+Sincronizar com Google Calendar ou Slack para agendamento de tarefas e lembretes.
+Customização Total:
+Permitir que o usuário personalize o layout do dashboard e as cores do sistema de acordo com sua preferência.
+Conclusão
+O KOT – Keep On Track será uma solução completa para os creators, integrando:
+
+Dashboard: Visão geral de finanças e métricas dos canais.
+Gestão Financeira: Controle detalhado de receitas, despesas, investimentos e patrimônio, com filtragem e relatórios.
+Gestão de Mídias: Monitoramento de desempenho dos canais nas principais plataformas.
+Configurações / Perfil: Área centralizada para ajustes e personalização da conta.
+Login e Registro: Fluxo de acesso seguro e intuitivo.
+Kot Hub (Assistente Virtual Kot): Uma área inovadora que combina gerenciamento de tarefas e suporte inteligente (baseado em GPT) para planejar e organizar ações estratégicas, inclusive processando arquivos para extração de dados.

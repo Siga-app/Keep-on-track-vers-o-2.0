@@ -1,0 +1,32 @@
+Preciso que você adapte o template Sneat Bootstrap HTML Admin (https://demos.themeselection.com/sneat-bootstrap-html-admin-template-free/html/) para criar uma plataforma SaaS chamada KOT - Keep On Track. Esta plataforma é destinada a creators, influenciadores e YouTubers que desejam gerenciar suas atividades online como um negócio profissional. Vamos trabalhar nos seguintes aspectos:
+
+1. IDENTIDADE VISUAL:
+   - Substitua todas as referências ao Sneat pelo KOT - Keep On Track
+   - Use a paleta de cores do KOT: tons de azul (#007bff para ações principais), branco para fundo, preto/cinza escuro para textos, vermelho para despesas e verde para receitas
+   - Implemente o logotipo do KOT em todos os lugares relevantes (navbar, favicon, tela de login)
+   - Use fontes modernas como Roboto, Open Sans ou Lato
+
+2. ESTRUTURA PRINCIPAL:
+   - Dashboard principal com cards de resumo financeiro e métricas de canais
+   - Seção de Gestão Financeira com tabelas para transações e gráficos
+   - Seção de Gestão de Mídias (Métricas de Canais) para YouTube, Instagram e TikTok
+   - Kot Hub (área interativa com quadro de tarefas estilo Trello e assistente virtual)
+   - Área de Configurações/Perfil
+   - Páginas de Login/Registro
+
+3. COMPONENTES ESPECÍFICOS:
+   - Dashboard: Criar cards de resumo financeiro (receitas, despesas, saldo) e cards de métricas de canais
+   - Gestão Financeira: Implementar formulários para registro de transações, tabela de visualização e gráficos (Chart.js)
+   - Gestão de Mídias: Criar interface para cadastro de canais e visualização de métricas
+   - Kot Hub: Desenvolver o quadro de tarefas estilo Trello e o componente de assistente virtual
+   - Layout responsivo para todos os dispositivos
+
+4. FUNCIONALIDADES INTERATIVAS:
+   - Implementar filtros nas tabelas de transações financeiras
+   - Adicionar funcionalidade de upload de arquivos para o assistente virtual
+   - Criar gráficos interativos para análise de dados
+   - Implementar o fluxo de login/registro completo
+
+Por favor, mantenha a estrutura original do template mas adapte completamente para o KOT, removendo TODAS as referências ao Sneat. Utilize React para os componentes interativos quando possível e implemente Chart.js para as visualizações de dados.
+
+Comece criando a estrutura de arquivos HTML/CSS/JS necessária e adapte cada página conforme as especificações acima. Vamos começar pelo dashboard principal, que é a página mais importante.
