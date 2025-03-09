@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+
+<html
+  lang="pt-br"
+  class="light-style layout-menu-fixed"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <title>KOT Hub | Keep on Track</title>
+
+    <meta name="description" content="Keep on Track - Hub de produtividade para creators, influenciadores e YouTubers" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../attached_assets/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../assets/js/config.js"></script>
+    
+    <style>
+      .kanban-board {
+        display: flex;
+        overflow-x: auto;
+        padding: 1rem 0;
+        gap: 1rem;
+      }
+      
+      .kanban-column {
+        min-width: 300px;
+        background: #f5f5f9;
+        border-radius: 0.5rem;
+        padding: 1rem;
+      }
+      
+      .kanban-column-header {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .kanban-card {
+        background: white;
+        border-radius: 0.375rem;
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        cursor: pointer;
+      }
+      
+      .kanban-card:hover {
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      }
+      
+      .kanban-card-title {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+      
+      .kanban-card-desc {
+        font-size: 0.875rem;
+        color: #697a8d;
+      }
+      
+      .kanban-card-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        font-size: 0.75rem;
+      }
+      
+      .chat-container {
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .chat-messages {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 1rem;
+        background: #f5f5f9;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      .chat-message {
+        margin-bottom: 1rem;
+        max-width: 80%;
+      }
+      
+      .chat-message-user {
+        margin-left: auto;
+        background: #007bff;
+        color: white;
+        border-radius: 1rem 1rem 0 1rem;
+        padding: 0.75rem 1rem;
+      }
+      
+      .chat-message-assistant {
+        margin-right: auto;
+        background: white;
+        border-radius: 1rem 1rem 1rem 0;
+        padding: 0.75rem 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      }
+      
+      .chat-input {
+        display: flex;
+        gap: 0.5rem;
+      }
+      
+      .chat-input-field {
+        flex-grow: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+              <span class="app-brand-logo demo">
+                <img src="../attached_assets/keepontrack-simbolo.png" alt="Keep on Track" height="40">
+              </span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">
+                <img src="../attached_assets/keepontrack-nome.png" alt="Keep on Track" height="30">
+              </span>
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a href="index.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Dashboard</div>
+              </a>
+            </li>
+
+            <!-- Sobre -->
+            <li class="menu-item">
+              <a href="sobre.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-info-circle"></i>
+                <div data-i18n="Sobre">Sobre</div>
+              </a>
+            </li>
+
+            <li class="menu-header small text-uppercase">
+              <span class="menu-header-text">Plataforma KOT</span>
+            </li>
+            
+            <!-- Gestão Financeira -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dollar-circle"></i>
+                <div data-i18n="Financial Management">Gestão Financeira</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="financial-dashboard.html" class="menu-link">
+                    <div data-i18n="Dashboard">Dashboard Financeiro</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="financial-transactions.html" class="menu-link">
+                    <div data-i18n="Transactions">Transações</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="financial-reports.html" class="menu-link">
+                    <div data-i18n="Reports">Relatórios</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- Métricas de Canais -->
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-play-circle"></i>
+                <div data-i18n="Channel Metrics">Métricas de Canais</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="metrics-youtube.html" class="menu-link">
+                    <div data-i18n="YouTube">YouTube</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="metrics-instagram.html" class="menu-link">
+                    <div data-i18n="Instagram">Instagram</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="metrics-tiktok.html" class="menu-link">
+                    <div data-i18n="TikTok">TikTok</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <!-- KOT Hub -->
+            <li class="menu-item active">
+              <a href="kot-hub.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-bulb"></i>
+                <div data-i18n="KOT Hub">KOT Hub</div>
+              </a>
+            </li>
+            
+            <!-- Outros itens do menu seriam incluídos aqui -->
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar"
+          >
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+              <!-- Search -->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item d-flex align-items-center">
+                  <i class="bx bx-search fs-4 lh-0"></i>
+                  <input
+                    type="text"
+                    class="form-control border-0 shadow-none"
+                    placeholder="Buscar..."
+                    aria-label="Buscar..."
+                  />
+                </div>
+              </div>
+              <!-- /Search -->
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                      <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                          <div class="flex-shrink-0 me-3">
+                            <div class="avatar avatar-online">
+                              <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                            </div>
+                          </div>
+                          <div class="flex-grow-1">
+                            <span class="fw-semibold d-block">Creator KOT</span>
+                            <small class="text-muted">Conta Premium</small>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="bx bx-user me-2"></i>
+                        <span class="align-middle">Meu Perfil</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <i class="bx bx-cog me-2"></i>
+                        <span class="align-middle">Configurações</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        <span class="d-flex align-items-center align-middle">
+                          <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
+                          <span class="flex-grow-1 align-middle">Faturamento</span>
+                          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="auth-login-basic.html">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">Sair</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+          </nav>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4">KOT Hub</h4>
+
+              <div class="row">
+                <div class="col-12 mb-4">
+                  <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0">Quadro de Tarefas</h5>
+                      <button type="button" class="btn btn-primary">
+                        <i class="bx bx-plus me-0 me-sm-1"></i>
+                        <span class="d-none d-sm-inline-block">Nova Tarefa</span>
+                      </button>
+                    </div>
+                    <div class="card-body">
+                      <div class="kanban-board">
+                        <div class="kanban-column">
+                          <div class="kanban-column-header">A Fazer</div>
+                          <div class="kanban-card">
+                            <div class="kanban-card-title">Gravar vídeo tutorial</div>
+                            <div class="kanban-card-desc">Preparar e gravar tutorial sobre edição de vídeo</div>
+                            <div class="kanban-card-footer">
+                              <span class="badge bg-label-primary">YouTube</span>
+                              <span>Vence em 3 dias</span>
+                            </div>
+                          </div>
+                          <div class="kanban-card">
+                            <div class="kanban-card-title">Analisar métricas</div>
+                            <div class="kanban-card-desc">Revisar dados de desempenho dos últimos 30 dias</div>
+                            <div class="kanban-card-footer">
+                              <span class="badge bg-label-info">Análise</span>
+                              <span>Vence em 5 dias</span>
+                            </div>
+                          </div>
+                          <div class="kanban-card">
+                            <div class="kanban-card-title">Planejar cronograma</div>
+                            <div class="kanban-card-desc">Definir cronograma de conteúdo para o próximo mês</div>
+                            <div class="kanban-card-footer">
+                              <span class="badge bg-label-secondary">Planejamento</span>
+                              <span>Vence em 7 dias</span>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="kanban-column">
+                          <div class="kanban-column-header">Em Progresso</div>
+                          <div class="kanban-card">
+                            <div class="kanban-card-title">Editar vídeo semanal</div>
+                            <div class="kanban-card-desc">Finalizar a edição do vídeo sobre dicas de produtividade</div>
+                            <div class="kanban-card-footer">
+                              <span class="badge bg-label-warning">Edição</span>
+                              <span>50% concluído</span>
+                            </div>
+                          </div>
+                          <div class="kanban-card">
+                            <div class="kanban-card-title">Criar miniaturas</div>
+                            <div class="kanban-card-desc">Desenvolver thumbnails para os próximos 3 vídeos</div>
+                            <div class="kanban-card-footer">
+                              <span class="badge bg-label-danger">Design</span>
+                              <span>75% concluído</span>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div class="kanban-column">
+                          <div class="kanban-column-header">Concluído</div>
+                          <div class="kanban-card">
+                            <div class="kanban-card-title">Atualizar descrições</div>
+                            <div class="kanban-card-desc">Atualizar as descrições dos vídeos com novos links</div>
+                            <div class="kanban-card-footer">
+                              <span class="badge bg-label-success">SEO</span>
+                              <span>Concluído</span>
+                            </div>
+                          </div>
+                          <div class="kanban-card">
+                            <div class="kanban-card-title">Responder comentários</div>
+                            <div class="kanban-card-desc">Interagir com os comentários da última semana</div>
+                            <div class="kanban-card-footer">
+                              <span class="badge bg-label-primary">Engajamento</span>
+                              <span>Concluído</span>
+                            </div>
+                          </div>
+                          <div class="kanban-card">
+                            <div class="kanban-card-title">Publicar stories</div>
+                            <div class="kanban-card-desc">Criar e programar stories sobre o próximo lançamento</div>
+                            <div class="kanban-card-footer">
+                              <span class="badge bg-label-info">Instagram</span>
+                              <span>Concluído</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 mb-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="mb-0">Assistente Virtual KOT</h5>
+                    </div>
+                    <div class="card-body">
+                      <div class="chat-container">
+                        <div class="chat-messages">
+                          <div class="chat-message chat-message-assistant">
+                            Olá! Sou seu assistente virtual KOT. Como posso ajudar você hoje?
+                          </div>
+                          <div class="chat-message chat-message-user">
+                            Preciso de ideias para o meu próximo vídeo sobre produtividade.
+                          </div>
+                          <div class="chat-message chat-message-assistant">
+                            Claro! Aqui estão algumas sugestões para seu vídeo sobre produtividade:<br><br>
+                            1. "5 Apps que Revolucionaram Minha Rotina"<br>
+                            2. "Como Planejar uma Semana Produtiva em 30 Minutos"<br>
+                            3. "Método Pomodoro: Como Apliquei e Meus Resultados"<br>
+                            4. "Organizando seu Setup para Máxima Produtividade"<br>
+                            5. "Como Batemos Deadlines Impossíveis: Estratégias Reais"<br><br>
+                            Qual dessas ideias mais combina com seu canal?
+                          </div>
+                        </div>
+                        <div class="chat-input">
+                          <input type="text" class="form-control chat-input-field" placeholder="Digite sua mensagem aqui...">
+                          <button type="button" class="btn btn-primary">
+                            <i class="bx bx-send"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , Keep on Track
+                </div>
+                <div>
+                  <a href="#" class="footer-link me-4">Termos de Uso</a>
+                  <a href="#" class="footer-link me-4">Política de Privacidade</a>
+                  <a href="#" class="footer-link me-4">Contato</a>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <!-- Core JS -->
+    <script src="assets/vendor/js/core.js"></script>
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+
+  </body>
+</html>

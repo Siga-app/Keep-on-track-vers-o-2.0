@@ -1,44 +1,33 @@
-const path = require('path');
-const { src, dest, series } = require('gulp');
-const replace = require('gulp-replace');
+'use strict';
+
+const gulp = require('gulp');
 const useref = require('gulp-useref');
+const gulpIf = require('gulp-if');
+const uglify = require('gulp-uglify');
+const cleanCSS = require('gulp-clean-css');
 
-module.exports = conf => {
-  // Copy templatePath html files and assets to buildPath
-  // -------------------------------------------------------------------------------
-  const prodCopyTask = function () {
-    return src(`${templatePath}/**/*.html`)
-      .pipe(dest(buildPath))
-      .pipe(src('assets/**/*'))
-      .pipe(dest(`${buildPath}/assets/`));
-  };
+module.exports = function(conf) {
 
-  // Rename assets path
-  // -------------------------------------------------------------------------------
-  const prodRenameTasks = function () {
-    return src(`${buildPath}/*.html`)
-      .pipe(replace('../../assets', 'assets'))
-      .pipe(dest(buildPath))
-      .pipe(src(`${buildPath}/assets/**/*`))
-      .pipe(replace('../../assets', 'assets'))
-      .pipe(dest(`${buildPath}/assets/`));
-  };
+  // Processa os arquivos HTML, concatenando e minificando referências a CSS e JS
+  function prodUseRefTasks() {
+    return gulp.src('html/**/*.html', { allowEmpty: true })
+      .pipe(useref({ searchPath: ['.', 'html'], allowEmpty: true }))
+      .pipe(gulpIf('*.js', uglify()))
+      .pipe(gulpIf('*.css', cleanCSS()))
+      .pipe(gulp.dest(conf.distPath));
+  }
 
-  // Combine js vendor assets in single core.js file using UseRef
-  // -------------------------------------------------------------------------------
-  const prodUseRefTasks = function () {
-    return src(`${buildPath}/*.html`).pipe(useref()).pipe(dest(buildPath));
-  };
+  // Copia os ativos (assets) para o diretório de build
+  function prodCopyAssets() {
+    return gulp.src('assets/**/*', { allowEmpty: true })
+      .pipe(gulp.dest(conf.distPath + '/assets'));
+  }
 
-  const prodAllTask = series(prodCopyTask, prodRenameTasks, prodUseRefTasks);
-
-  // Exports
-  // ---------------------------------------------------------------------------
+  const all = gulp.series(prodUseRefTasks, prodCopyAssets);
 
   return {
-    copy: prodCopyTask,
-    rename: prodRenameTasks,
-    useref: prodUseRefTasks,
-    all: prodAllTask
+    all: all,
+    useRef: prodUseRefTasks,
+    copyAssets: prodCopyAssets
   };
 };

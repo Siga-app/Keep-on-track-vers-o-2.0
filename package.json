@@ -80,6 +80,8 @@
     "gulp-useref": "^5.0.0",
     "gulp-dart-sass": "^1.0.2",
     "gulp-exec": "^5.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-clean-css": "^4.3.0",
     "html-loader": "~0.5.5",
     "js-beautify": "^1.10.3",
     "prettier": "^2.2.1",
