@@ -1,0 +1,29 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1) Faz o checkout do código
+      - name: Check out
+        uses: actions/checkout@v3
+
+      # 2) Instala as dependências (usando a flag legacy-peer-deps para evitar conflitos)
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      # 3) Compila o projeto em modo produção
+      - name: Build project
+        run: npm run build:prod
+
+      # 4) Publica a pasta compilada no GitHub Pages (branch gh-pages)
+      - name: Deploy to GH Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # Se seu gulp gerar arquivos em outra pasta (ex.: "build"), troque aqui para ./build
